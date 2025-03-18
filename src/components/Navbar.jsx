@@ -32,7 +32,7 @@ const Navbar = () => {
             </Button>
             <Button color="inherit" onClick={tokencancel}>
               <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
-                Logout
+                Logout or GoBack
               </Link>
             </Button>
           </Toolbar>
