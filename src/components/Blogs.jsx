@@ -12,13 +12,16 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import AddBlog from "./AddBlog";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3005";
+
+
 const Blogs = () => {
   const [cardData, setCardData] = useState([]);
   const [up, setUp] = useState(false);
   const [singleVal, setSingleVal] = useState({});
 
   useEffect(() => {
-    axios.get("http://localhost:3005/user/view")
+    axios.get(`${API_URL}/user/view`)
       .then((res) => {
         setCardData(res.data.data);
       })
@@ -39,7 +42,7 @@ const Blogs = () => {
   };
 
   const deleteVal = (id) => {
-    axios.delete("http://localhost:3005/user/delete/" + id).then((res) => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/user/delete/${id}`).then((res) => {
       Swal.fire({
         position: "top-center",
         icon: "success",

@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3005";
+
+
 const Signup = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState();
@@ -17,7 +20,7 @@ const Signup = () => {
   const addHandler = async () => {
     try {
       // Make the API call (e.g., using Axios)
-      const response = await axios.post("http://localhost:3005/user", users);
+      const response = await axios.post(`${API_URL}/user`, users);
 
       // Handle successful response (if needed)
       console.log("Signup successful:", response.data.message);

@@ -4,6 +4,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3005";
+
+
 const AddBlog = ({ method, data }) => {
   const navigate = useNavigate();
   const [post, setPost] = useState({
@@ -30,7 +33,7 @@ const AddBlog = ({ method, data }) => {
     }
 
     if (method === "post") {
-      axios.post("http://localhost:3005/user/add", post)
+      axios.post(`${API_URL}/user/add`, post)
         .then((res) => {
           if (res.data.success) {
             Swal.fire({
@@ -51,7 +54,7 @@ const AddBlog = ({ method, data }) => {
     }
 
     if (method === "put") {
-      axios.put("http://localhost:3005/user/update/" + post._id, post)
+      axios.put(`${API_URL}/user/update/${post._id}`, post)
         .then((res) => {
           Swal.fire({
             position: "top-center",

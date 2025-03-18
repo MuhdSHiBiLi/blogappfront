@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from "sweetalert2"
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3005";
+
+
 const Login = () => {
   const navigate = useNavigate();
   const [user,setUser]=useState({
@@ -20,7 +23,7 @@ const Login = () => {
       return;
     }
     console.log(user);
-    axios.post("http://localhost:3005/user/login", user).then((res)=>{
+    axios.post(`${API_URL}/user/login`, user).then((res)=>{
       console.log(res.data.message)
       if(res.data.message == "Login Succesfull"){
         Swal.fire({
